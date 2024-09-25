@@ -1,0 +1,33 @@
+# Node modules
+node_modules/
+
+# Log files
+*.log
+
+# Environment variables (if using dotenv)
+.env
+.env.local
+.env.*.local
+
+# Build outputs
+dist/
+build/
+public/build/
+
+# Editor specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Tailwind CSS specific files (if generated)
+.tailwind.cache
+*.css.map
+
+# Temporary files
+tmp/
+temp/

@@ -1,0 +1,14 @@
+{
+  "name": "milad-print",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx tailwindcss -i ./css/input.css -o ./css/style.css --watch"
+  },
+  "author": "Ramin Joshang",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
+}
