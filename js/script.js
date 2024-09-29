@@ -24,3 +24,17 @@ const swiper2 = new Swiper(".mySwiper2", {
         prevEl: ".prev-1",
     },
 });
+
+const swiper3 = new Swiper(".mySwiper3", {
+    spaceBetween: 20,
+    loop: true,
+    slidesPerView: 6,
+    // autoplay: {
+    //     delay: 2500,
+    //     disableOnInteraction: false,
+    // },
+    navigation: {
+        nextEl: ".next-2",
+        prevEl: ".prev-2",
+    },
+});
