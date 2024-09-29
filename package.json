@@ -10,5 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "tailwindcss": "^3.4.13"
+  },
+  "dependencies": {
+    "milad-print": "file:"
   }
 }

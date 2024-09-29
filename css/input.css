@@ -69,3 +69,8 @@
 * {
   font-family: YekanBakh !important;
 }
+
+.swiper-button-next:after,
+.swiper-button-prev:after {
+  content: "" !important;
+}
