@@ -16,19 +16,19 @@
     <!--                                 Header                                  -->
     <!-- ----------------------------------------------------------------------- -->
     <header class="py-5">
-        <div class="container mx-auto px-10">
+        <div class="container mx-auto px-5 md:px-0">
             <div class="flex items-center justify-between">
                 <div class="flex items-center gap-8">
                     <div class="flex items-center gap-2">
                         <img class="w-full" src="./images/logo.png" alt="چاپ میلاد">
-                        <div>
+                        <div class="min-w-fit">
                             <p class="text-[11px] text-mute -mb-1.5">کانون چاپ و تبلیغات</p>
                             <h3 class="text-primary text-2xl font-bold font-[Namava]">چاپ میلاد</h3>
                         </div>
                     </div>
-                    <div class="relative border rounded-full flex justify-between items-center px-1">
-                        <input class="outline-none py-2 pr-5 pl-2 bg-transparent placeholder:text-xs w-96" type="text"
-                            placeholder="جستجو در محصولات">
+                    <div class="relative border rounded-full justify-between items-center px-1 hidden lg:flex">
+                        <input class="outline-none py-2 pr-5 pl-2 bg-transparent placeholder:text-xs w-full xl:w-96"
+                            type="text" placeholder="جستجو در محصولات">
                         <span class="bg-primary p-2 rounded-full">
                             <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,15 @@
                         </span>
                     </div>
                 </div>
-                <div class="flex items-center gap-2">
+                <button id="navbar-btn" class="md:hidden">
+                    <span class="text-primary text-2xl">
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <span class="text-primary text-2xl hidden">
+                        <i class="fa fa-times"></i>
+                    </span>
+                </button>
+                <div class="md:flex items-center gap-2 hidden">
                     <button
                         class="flex items-center gap-2 py-2.5 px-4 border-[1.5px] border-primary text-primary rounded-full">
                         <span>
@@ -95,60 +103,798 @@
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Navbar                                  -->
     <!-- ----------------------------------------------------------------------- -->
-    <nav class="bg-primary py-2">
-        <div class="container mx-auto px-10">
-            <div class="flex justify-between items-center">
-                <ul class="flex gap-3">
-                    <li>
-                        <a class="text-primary px-5 py-2 inline-block bg-white font-bold rounded-full text-sm"
+    <nav id="navbar"
+        class="bg-primary py-2 overflow-auto md:overflow-visible md:static fixed -right-64 top-0 bottom-0 w-64 md:w-auto md:block transition-all duration-300">
+        <div class="container mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center mt-5 md:mt-0">
+                <ul class="flex flex-col md:flex-row gap-4 xl:gap-10  w-full md:w-auto">
+                    <li class="w-full md:w-auto px-5 md:px-0 py-1 md:py-0 hover:bg-[#00000030] md:hover:bg-inherit">
+                        <a class="text-white md:text-primary md:px-5 py-2 inline-block md:bg-white md:font-bold md:rounded-full text-sm"
                             href="#">صفحه
                             اصلی</a>
                     </li>
-                    <li>
-                        <a class="text-white px-7 py-2 inline-block text-sm hover:text-primary hover:bg-white hover:rounded-full hover:font-bold"
-                            href="#">محصولات</a>
+                    <li
+                        class="relative group w-full md:w-auto px-5 md:px-0 py-1 md:py-0 hover:bg-[#00000030] md:hover:bg-inherit">
+                        <a class="text-white py-2 inline-block text-sm" href="#">محصولات</a>
+                        <div class="pt-10 hidden md:group-hover:block absolute top-3 ">
+                            <div class="border border-primary rounded-3xl p-5 bg-[#C7FFFA] w-[415px] flex gap-8">
+                                <ul id="navar-menu-category"
+                                    class="list-disc list flex flex-col gap-4 pr-5 pl-3 border-l-2 border-primary">
+                                    <li class="marker:text-primary marker:text-[10px] text-primary text-xs font-bold">
+                                        <a class="-mr-1" href="">عنوان دسته بندی</a>
+                                    </li>
+                                    <li class="marker:text-primary marker:text-[10px] text-[#7B7D7E] text-[11px]">
+                                        <a class="-mr-1" href="">عنوان دسته بندی</a>
+                                    </li>
+                                    <li class="marker:text-primary marker:text-[10px] text-[#7B7D7E] text-[11px]">
+                                        <a class="-mr-1" href="">عنوان دسته بندی</a>
+                                    </li>
+                                    <li class="marker:text-primary marker:text-[10px] text-[#7B7D7E] text-[11px]">
+                                        <a class="-mr-1" href="">عنوان دسته بندی</a>
+                                    </li>
+                                    <li class="marker:text-primary marker:text-[10px] text-[#7B7D7E] text-[11px]">
+                                        <a class="-mr-1" href="">عنوان دسته بندی</a>
+                                    </li>
+                                    <li class="marker:text-primary marker:text-[10px] text-[#7B7D7E] text-[11px]">
+                                        <a class="-mr-1" href="">عنوان دسته بندی</a>
+                                    </li>
+                                    <li class="marker:text-primary marker:text-[10px] text-[#7B7D7E] text-[11px]">
+                                        <a class="-mr-1" href="">عنوان دسته بندی</a>
+                                    </li>
+                                    <li class="marker:text-primary marker:text-[10px] text-[#7B7D7E] text-[11px]">
+                                        <a class="-mr-1" href="">عنوان دسته بندی</a>
+                                    </li>
+                                </ul>
+                                <div id="navbar-menu-products">
+                                    <ul class="grid grid-cols-3 list-disc gap-x-7 gap-y-1">
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="grid grid-cols-3 list-disc gap-x-7 gap-y-1 hidden">
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="grid grid-cols-3 list-disc gap-x-7 gap-y-1 hidden">
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="grid grid-cols-3 list-disc gap-x-7 gap-y-1 hidden">
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="grid grid-cols-3 list-disc gap-x-7 gap-y-1 hidden">
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="grid grid-cols-3 list-disc gap-x-7 gap-y-1 hidden">
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="grid grid-cols-3 list-disc gap-x-7 gap-y-1 hidden">
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                    </ul>
+                                    <ul class="grid grid-cols-3 list-disc gap-x-7 gap-y-1 hidden">
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                        <li class="marker:text-[10px] marker:text-[#7B7D7E]">
+                                            <a class="text-[#7B7D7E] text-[10px] -mr-1.5" href="">عنوان محصول</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
                     </li>
-                    <li>
-                        <a class="text-white px-7 py-2 inline-block text-sm hover:text-primary hover:bg-white hover:rounded-full hover:font-bold"
-                            href="#">لیست قیمت</a>
+                    <li class="w-full md:w-auto px-5 md:px-0 py-1 md:py-0 hover:bg-[#00000030] md:hover:bg-inherit">
+                        <a class="text-white py-2 inline-block text-sm" href="#">لیست قیمت</a>
                     </li>
-                    <li>
-                        <a class="text-white px-7 py-2 inline-block text-sm hover:text-primary hover:bg-white hover:rounded-full hover:font-bold"
-                            href="#">وبلاگ</a>
+                    <li class="w-full md:w-auto px-5 md:px-0 py-1 md:py-0 hover:bg-[#00000030] md:hover:bg-inherit">
+                        <a class="text-white py-2 inline-block text-sm" href="#">وبلاگ</a>
                     </li>
-                    <li>
-                        <a class="text-white px-7 py-2 inline-block text-sm hover:text-primary hover:bg-white hover:rounded-full hover:font-bold"
-                            href="#">سوالات متداول</a>
+                    <li class="w-full md:w-auto px-5 md:px-0 py-1 md:py-0 hover:bg-[#00000030] md:hover:bg-inherit">
+                        <a class="text-white py-2 inline-block text-sm" href="#">سوالات متداول</a>
                     </li>
-                    <li>
-                        <a class="text-white px-7 py-2 inline-block text-sm hover:text-primary hover:bg-white hover:rounded-full hover:font-bold"
-                            href="#">راهنما</a>
+                    <li class="w-full md:w-auto px-5 md:px-0 py-1 md:py-0 hover:bg-[#00000030] md:hover:bg-inherit">
+                        <a class="text-white py-2 inline-block text-sm" href="#">راهنما</a>
                     </li>
-                    <li>
-                        <a class="text-white px-7 py-2 inline-block text-sm hover:text-primary hover:bg-white hover:rounded-full hover:font-bold"
-                            href="#">قوانین و مقررات</a>
+                    <li class="w-full md:w-auto px-5 md:px-0 py-1 md:py-0 hover:bg-[#00000030] md:hover:bg-inherit">
+                        <a class="text-white py-2 inline-block text-sm" href="#">قوانین و مقررات</a>
                     </li>
-                    <li>
-                        <a class="text-white px-7 py-2 inline-block text-sm hover:text-primary hover:bg-white hover:rounded-full hover:font-bold"
-                            href="#">درباره ی ما</a>
+                    <li class="w-full md:w-auto px-5 md:px-0 py-1 md:py-0 hover:bg-[#00000030] md:hover:bg-inherit">
+                        <a class="text-white py-2 inline-block text-sm" href="#">درباره ی ما</a>
                     </li>
-                    <li>
-                        <a class="text-white px-7 py-2 inline-block text-sm hover:text-primary hover:bg-white hover:rounded-full hover:font-bold"
-                            href="#">تماس با ما </a>
+                    <li class="w-full md:w-auto px-5 md:px-0 py-1 md:py-0 hover:bg-[#00000030] md:hover:bg-inherit">
+                        <a class="text-white py-2 inline-block text-sm" href="#">تماس با ما </a>
                     </li>
                 </ul>
-                <button class="flex items-center gap-1 px-3 py-1 bg-white rounded-full">
+                <div class="px-5 mt-3 md:mt-0 md:hidden xl:block">
+
+                    <button class="flex w-full items-center gap-1 px-2.5 py-1 bg-white rounded-full">
+                        <span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M10.9382 3.46545C11.4617 2.74295 12.5383 2.74295 13.0618 3.46545V3.46545C13.4475 3.99784 14.1679 4.16225 14.7464 3.84996V3.84996C15.5315 3.42613 16.5015 3.89324 16.6596 4.77132V4.77132C16.7762 5.41835 17.3538 5.87903 18.0106 5.84867V5.84867C18.9018 5.80747 19.5731 6.64918 19.3346 7.50892V7.50892C19.1588 8.14243 19.4794 8.80815 20.0843 9.06574V9.06574C20.9052 9.41532 21.1447 10.4649 20.5568 11.136V11.136C20.1236 11.6306 20.1236 12.3694 20.5568 12.864V12.864C21.1447 13.5351 20.9052 14.5847 20.0843 14.9343V14.9343C19.4794 15.1919 19.1588 15.8576 19.3346 16.4911V16.4911C19.5731 17.3508 18.9018 18.1925 18.0106 18.1513V18.1513C17.3538 18.121 16.7762 18.5817 16.6596 19.2287V19.2287C16.5015 20.1068 15.5315 20.5739 14.7464 20.15V20.15C14.1679 19.8377 13.4475 20.0022 13.0618 20.5345V20.5345C12.5383 21.2571 11.4617 21.2571 10.9382 20.5345V20.5345C10.5525 20.0022 9.83214 19.8377 9.25362 20.15V20.15C8.4685 20.5739 7.49853 20.1068 7.34038 19.2287V19.2287C7.22384 18.5817 6.64616 18.121 5.98943 18.1513V18.1513C5.09816 18.1925 4.42693 17.3508 4.66542 16.4911V16.4911C4.84116 15.8576 4.52057 15.1919 3.9157 14.9343V14.9343C3.09482 14.5847 2.85526 13.5351 3.44317 12.864V12.864C3.87637 12.3694 3.87637 11.6306 3.44317 11.136V11.136C2.85526 10.4649 3.09482 9.41532 3.9157 9.06574V9.06574C4.52057 8.80815 4.84116 8.14243 4.66542 7.50892V7.50892C4.42693 6.64917 5.09816 5.80747 5.98943 5.84867V5.84867C6.64616 5.87903 7.22384 5.41835 7.34038 4.77132V4.77132C7.49853 3.89324 8.4685 3.42613 9.25362 3.84996V3.84996C9.83214 4.16225 10.5525 3.99784 10.9382 3.46545V3.46545Z"
+                                    stroke="#009B9E" stroke-linejoin="round" />
+                                <path d="M8.36346 11.9999L11.0907 14.7272L15.6362 10.1818" stroke="#009B9E"
+                                    stroke-linejoin="round" />
+                                <circle cx="12" cy="12" r="5.90909" stroke="#009B9E" />
+                            </svg>
+                        </span>
+                        <p class="text-[10px] md:text-xs text-primary">سفارشات چاپ به صورت حضوری و آنلاین</p>
+                    </button>
+                </div>
+            </div>
+            <div class="md:hidden px-5 gap-2 flex flex-col justify-center mt-5 md:mt-0">
+                <button
+                    class="flex justify-center items-center gap-2 py-2.5 px-4 border-[1.5px] border-white text-white rounded-full">
                     <span>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M10.9382 3.46545C11.4617 2.74295 12.5383 2.74295 13.0618 3.46545V3.46545C13.4475 3.99784 14.1679 4.16225 14.7464 3.84996V3.84996C15.5315 3.42613 16.5015 3.89324 16.6596 4.77132V4.77132C16.7762 5.41835 17.3538 5.87903 18.0106 5.84867V5.84867C18.9018 5.80747 19.5731 6.64918 19.3346 7.50892V7.50892C19.1588 8.14243 19.4794 8.80815 20.0843 9.06574V9.06574C20.9052 9.41532 21.1447 10.4649 20.5568 11.136V11.136C20.1236 11.6306 20.1236 12.3694 20.5568 12.864V12.864C21.1447 13.5351 20.9052 14.5847 20.0843 14.9343V14.9343C19.4794 15.1919 19.1588 15.8576 19.3346 16.4911V16.4911C19.5731 17.3508 18.9018 18.1925 18.0106 18.1513V18.1513C17.3538 18.121 16.7762 18.5817 16.6596 19.2287V19.2287C16.5015 20.1068 15.5315 20.5739 14.7464 20.15V20.15C14.1679 19.8377 13.4475 20.0022 13.0618 20.5345V20.5345C12.5383 21.2571 11.4617 21.2571 10.9382 20.5345V20.5345C10.5525 20.0022 9.83214 19.8377 9.25362 20.15V20.15C8.4685 20.5739 7.49853 20.1068 7.34038 19.2287V19.2287C7.22384 18.5817 6.64616 18.121 5.98943 18.1513V18.1513C5.09816 18.1925 4.42693 17.3508 4.66542 16.4911V16.4911C4.84116 15.8576 4.52057 15.1919 3.9157 14.9343V14.9343C3.09482 14.5847 2.85526 13.5351 3.44317 12.864V12.864C3.87637 12.3694 3.87637 11.6306 3.44317 11.136V11.136C2.85526 10.4649 3.09482 9.41532 3.9157 9.06574V9.06574C4.52057 8.80815 4.84116 8.14243 4.66542 7.50892V7.50892C4.42693 6.64917 5.09816 5.80747 5.98943 5.84867V5.84867C6.64616 5.87903 7.22384 5.41835 7.34038 4.77132V4.77132C7.49853 3.89324 8.4685 3.42613 9.25362 3.84996V3.84996C9.83214 4.16225 10.5525 3.99784 10.9382 3.46545V3.46545Z"
-                                stroke="#009B9E" stroke-linejoin="round" />
-                            <path d="M8.36346 11.9999L11.0907 14.7272L15.6362 10.1818" stroke="#009B9E"
-                                stroke-linejoin="round" />
-                            <circle cx="12" cy="12" r="5.90909" stroke="#009B9E" />
+                        <svg width="20" height="19" viewBox="0 0 20 19" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M3.5 2.5H19.5L17 12.5H6L3.5 2.5Z" stroke="#fff" stroke-linejoin="round" />
+                            <path d="M3.5 2.5L3 0.5H0.5" stroke="#fff" stroke-linejoin="round" />
+                            <circle cx="7" cy="16.5" r="1.5" stroke="#fff" stroke-linejoin="round" />
+                            <circle cx="16" cy="16.5" r="1.5" stroke="#fff" stroke-linejoin="round" />
+                            <path d="M11.5 5V10" stroke="#fff" stroke-linejoin="round" />
+                            <path d="M9 7.5H14" stroke="#fff" stroke-linejoin="round" />
                         </svg>
                     </span>
-                    <p class="text-xs text-primary">سفارشات چاپ به صورت حضوری و آنلاین</p>
+                    <p class="font-bold text-sm">ثبت سفارش</p>
+                </button>
+                <button
+                    class="flex justify-center items-center gap-2 py-2.5 px-4 border-[1.5px] border-white text-white rounded-full">
+                    <span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M20 7L18 14.5H8L6 7L5.5 5H3" stroke="#fff" stroke-linejoin="round" />
+                            <circle cx="8.5" cy="18.5" r="1.5" stroke="#fff" stroke-linejoin="round" />
+                            <circle cx="17.5" cy="18.5" r="1.5" stroke="#fff" stroke-linejoin="round" />
+                            <path d="M13 2V10" stroke="#fff" stroke-linejoin="round" />
+                            <path d="M16 7L13 10L10 7" stroke="#fff" stroke-linejoin="round" />
+                        </svg>
+
+                    </span>
+                    <p class="font-bold text-sm">سبد خرید شما </p>
+                </button>
+                <button
+                    class="flex justify-center items-center gap-2 py-2.5 px-4 border-[1.5px] border-white text-white rounded-full">
+                    <span>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="10" cy="10" r="9" stroke="#fff" />
+                            <circle cx="10" cy="8" r="3" stroke="#fff" />
+                            <path
+                                d="M16.0635 17C14.8532 14.9077 12.591 13.5 9.99999 13.5C7.409 13.5 5.1468 14.9077 3.93646 17"
+                                stroke="#fff" />
+                        </svg>
+                    </span>
+                    <p class="font-bold text-sm">ورود / ثبت نام</p>
                 </button>
             </div>
         </div>
@@ -159,10 +905,9 @@
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Banner                                  -->
     <!-- ----------------------------------------------------------------------- -->
-    <section class="py-10">
+    <!-- <section class="py-10">
         <div class="container mx-auto px-10">
             <div class="relative px-6">
-                <!-- Swiper -->
                 <div dir="rtl" class="swiper mySwiper">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -200,21 +945,20 @@
                         </svg>
                     </span>
                 </div>
-                <!-- Swiper -->
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Banner                                  -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                Category                                 -->
     <!-- ----------------------------------------------------------------------- -->
-    <section>
+    <!-- <section>
         <div class="container mx-auto px-10">
             <h1 class="text-4xl font-extrabold text-[#686868] text-center mb-5">لیست محصولات</h1>
             <div class="relative px-14">
-                <!-- Swiper -->
+                
                 <div dir="rtl" class="swiper mySwiper2 pb-5">
                     <div class="swiper-wrapper">
                         <div class="swiper-slide">
@@ -628,17 +1372,17 @@
 
                     </span>
                 </div>
-                <!-- Swiper -->
+                
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                Category                                 -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Product                                 -->
     <!-- ----------------------------------------------------------------------- -->
-    <section class="bg-[#C7FFFA] pt-44 pb-32 -mt-24 relative">
+    <!-- <section class="bg-[#C7FFFA] pt-44 pb-32 -mt-24 relative">
         <div class="container mx-auto px-10">
             <div class="grid grid-cols-4 gap-x-10 gap-y-12">
                 <div class="bg-white p-3 rounded-3xl text-center relative pb-10">
@@ -904,25 +1648,25 @@
                 <p class="text-xl font-bold">لیست دیگر محصولات </p>
             </button>
         </div>
-    </section>
+    </section> -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Product                                 -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                               Background                                -->
     <!-- ----------------------------------------------------------------------- -->
-    <section class="my-20">
+    <!-- <section class="my-20">
         <div class="container mx-auto px-10">
             <img class="w-full" src="./images/background.png" alt="چاپ میلاد">
         </div>
-    </section>
+    </section> -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                               Background                                -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Article                                 -->
     <!-- ----------------------------------------------------------------------- -->
-    <section class="my-20">
+    <!-- <section class="my-20">
         <div class="container mx-auto px-10">
             <div>
                 <div class="flex justify-between items-center">
@@ -1159,14 +1903,14 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Article                                 -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                   FAQ                                   -->
     <!-- ----------------------------------------------------------------------- -->
-    <section class="my-20">
+    <!-- <section class="my-20">
         <div class="container mx-auto px-10">
             <div class="w-4/5 mx-auto">
                 <h1 class="text-center text-primary font-black text-4xl">سوالات متداول</h1>
@@ -1246,19 +1990,19 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                   FAQ                                   -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                Customer                                 -->
     <!-- ----------------------------------------------------------------------- -->
-    <section class="mt-20">
+    <!-- <section class="mt-20">
         <div class="container mx-auto px-10">
             <div class="mx-auto">
                 <h1 class="text-center text-primary font-black text-4xl">مشتریان ما</h1>
                 <div class="relative px-14 mt-10">
-                    <!-- Swiper -->
+                    
                     <div dir="rtl" class="swiper mySwiper3 py-5">
                         <div class="swiper-wrapper">
                             <div class="swiper-slide">
@@ -1344,29 +2088,29 @@
 
                         </span>
                     </div>
-                    <!-- Swiper -->
+                    
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                Customer                                 -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                               Background                                -->
     <!-- ----------------------------------------------------------------------- -->
-    <section class="mt-5">
+    <!-- <section class="mt-5">
         <div class="container mx-auto px-10">
             <img class="w-full" src="./images/printer.png" alt="">
         </div>
-    </section>
+    </section> -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                               Background                                -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Footer                                  -->
     <!-- ----------------------------------------------------------------------- -->
-    <footer class="">
+    <!-- <footer class="">
         <div class="container mx-auto px-10">
             <section class="bg-[url('../images/footer.png')] bg-no-repeat bg-contain min-h-96 z-10">
                 <div>
@@ -1451,12 +2195,16 @@
 
             </div>
         </div>
-    </footer>
+    </footer> -->
     <!-- ----------------------------------------------------------------------- -->
     <!--                                 Footer                                  -->
     <!-- ----------------------------------------------------------------------- -->
     <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- * Font Awesome Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"
+        integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- * Custom Script -->
     <script src="./js/script.js"></script>
 </body>
