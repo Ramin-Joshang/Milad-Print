@@ -47,6 +47,7 @@ navbarBtn.addEventListener("click", () => {
 const swiper = new Swiper(".mySwiper", {
     spaceBetween: 30,
     loop: true,
+
     autoplay: {
         delay: 2500,
         disableOnInteraction: false,
@@ -60,25 +61,136 @@ const swiper = new Swiper(".mySwiper", {
 const swiper2 = new Swiper(".mySwiper2", {
     spaceBetween: 10,
     loop: true,
-    slidesPerView: 6,
-    // autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    // },
+    slidesPerView: 1,
+    breakpoints: {
+        500: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+        },
+        1280: {
+            slidesPerView: 5,
+            spaceBetween: 40,
+        },
+        1536: {
+            slidesPerView: 6,
+            spaceBetween: 50,
+        },
+    },
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
     navigation: {
         nextEl: ".next-1",
         prevEl: ".prev-1",
     },
 });
 
+const accordion = document.getElementById("accordion").children;
+let isAccordionOpen = false;
+let prevIndex = 0;
+let currentIndex = 0;
+[...accordion].forEach((element, index) => {
+    element.addEventListener("click", (e) => {
+        let title = element.getElementsByTagName("h2")[0];
+        if (!isAccordionOpen) {
+            [...accordion].forEach(element => {
+                element.classList.remove("bg-primary");
+                element.classList.add("bg-white");
+                element.classList.remove("h-40");
+                element.classList.add("h-[70px]");
+                element.getElementsByTagName("h2")[0].classList.remove("text-white")
+                element.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
+                element.getElementsByTagName("span")[0].classList.remove("hidden")
+                element.getElementsByTagName("span")[1].classList.add("hidden")
+                // element.getElementsByTagName("span")[0].classList.add("text-[#7B7D7E]")
+                // element.getElementsByTagName("span")[0].classList.add("text-[#7B7D7E]")
+
+            })
+            element.classList.add("bg-primary");
+            element.classList.remove("bg-white");
+            element.classList.add("h-40");
+            element.classList.remove("h-[70px]");
+            element.getElementsByTagName("h2")[0].classList.add("text-white")
+            element.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
+            element.getElementsByTagName("span")[1].classList.remove("hidden")
+            element.getElementsByTagName("span")[0].classList.add("hidden")
+            isAccordionOpen = true;
+            prevIndex = index;
+            console.log(prevIndex, currentIndex)
+        } else {
+            currentIndex = index;
+            if (currentIndex === prevIndex) {
+                element.classList.remove("bg-primary");
+                element.classList.add("bg-white");
+                element.classList.remove("h-40");
+                element.classList.add("h-[70px]");
+                element.getElementsByTagName("h2")[0].classList.remove("text-white")
+                element.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
+                element.getElementsByTagName("span")[0].classList.remove("hidden")
+                element.getElementsByTagName("span")[1].classList.add("hidden")
+            } else {
+                accordion[prevIndex].classList.remove("bg-primary");
+                accordion[prevIndex].classList.add("bg-white");
+                accordion[prevIndex].classList.remove("h-40");
+                accordion[prevIndex].classList.add("h-[70px]");
+                accordion[prevIndex].getElementsByTagName("h2")[0].classList.remove("text-white")
+                accordion[prevIndex].getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
+                accordion[prevIndex].getElementsByTagName("span")[0].classList.remove("hidden")
+                accordion[prevIndex].getElementsByTagName("span")[1].classList.add("hidden")
+                element.classList.add("bg-primary");
+                element.classList.remove("bg-white");
+                element.classList.add("h-40");
+                element.classList.remove("h-[70px]");
+                element.getElementsByTagName("h2")[0].classList.add("text-white")
+                element.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
+                element.getElementsByTagName("span")[1].classList.remove("hidden")
+                element.getElementsByTagName("span")[0].classList.add("hidden")
+            }
+            console.log(prevIndex, currentIndex)
+            isAccordionOpen = false;
+        }
+    })
+})
+
 const swiper3 = new Swiper(".mySwiper3", {
     spaceBetween: 20,
     loop: true,
-    slidesPerView: 6,
-    // autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    // },
+    slidesPerView: 1,
+    breakpoints: {
+        500: {
+            slidesPerView: 2,
+            spaceBetween: 20,
+        },
+        768: {
+            slidesPerView: 3,
+            spaceBetween: 20,
+        },
+        1024: {
+            slidesPerView: 4,
+            spaceBetween: 20,
+        },
+        1280: {
+            slidesPerView: 5,
+            spaceBetween: 40,
+        },
+        1536: {
+            slidesPerView: 6,
+            spaceBetween: 50,
+        },
+    },
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
     navigation: {
         nextEl: ".next-2",
         prevEl: ".prev-2",
