@@ -74,3 +74,41 @@
 .swiper-button-prev:after {
   content: "" !important;
 }
+
+#footer-logo::after {
+  content: " ";
+  position: absolute;
+  border-radius: 50%;
+  top: 100%;
+  right: 0;
+}
+#footer-logo::before {
+  content: " ";
+  position: absolute;
+  border-radius: 50%;
+  top: 0;
+  left: -97px;
+}
+#footer-logo::before,
+#footer-logo::after {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  box-shadow: calc(1 * 100px * 0.5) calc(-1 * 100px * 0.5) #fff;
+}
+
+@media screen and (max-width: 500px) {
+  #footer-logo {
+    width: 300px;
+  }
+
+  #footer-logo::before,
+  #footer-logo::after {
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background-color: transparent;
+    box-shadow: calc(1 * 100px * 0.5) calc(-1 * 100px * 0.5) #fff;
+  }
+}

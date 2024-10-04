@@ -24,9 +24,6 @@ const navbarDropdownProducts = document.getElementById("navbar-menu-products").c
 const navbar = document.getElementById("navbar");
 const navbarBtn = document.getElementById("navbar-btn");
 const navbarBtnIcon = navbarBtn.children;
-console.log(navbarBtnIcon[0], navbarBtnIcon[1])
-console.log(navbarBtn)
-console.log(navbar)
 let isNavbarOpen = false;
 navbarBtn.addEventListener("click", () => {
     if (isNavbarOpen) {
@@ -94,72 +91,6 @@ const swiper2 = new Swiper(".mySwiper2", {
     },
 });
 
-const accordion = document.getElementById("accordion").children;
-let isAccordionOpen = false;
-let prevIndex = 0;
-let currentIndex = 0;
-[...accordion].forEach((element, index) => {
-    element.addEventListener("click", (e) => {
-        let title = element.getElementsByTagName("h2")[0];
-        if (!isAccordionOpen) {
-            [...accordion].forEach(element => {
-                element.classList.remove("bg-primary");
-                element.classList.add("bg-white");
-                element.classList.remove("h-40");
-                element.classList.add("h-[70px]");
-                element.getElementsByTagName("h2")[0].classList.remove("text-white")
-                element.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
-                element.getElementsByTagName("span")[0].classList.remove("hidden")
-                element.getElementsByTagName("span")[1].classList.add("hidden")
-                // element.getElementsByTagName("span")[0].classList.add("text-[#7B7D7E]")
-                // element.getElementsByTagName("span")[0].classList.add("text-[#7B7D7E]")
-
-            })
-            element.classList.add("bg-primary");
-            element.classList.remove("bg-white");
-            element.classList.add("h-40");
-            element.classList.remove("h-[70px]");
-            element.getElementsByTagName("h2")[0].classList.add("text-white")
-            element.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
-            element.getElementsByTagName("span")[1].classList.remove("hidden")
-            element.getElementsByTagName("span")[0].classList.add("hidden")
-            isAccordionOpen = true;
-            prevIndex = index;
-            console.log(prevIndex, currentIndex)
-        } else {
-            currentIndex = index;
-            if (currentIndex === prevIndex) {
-                element.classList.remove("bg-primary");
-                element.classList.add("bg-white");
-                element.classList.remove("h-40");
-                element.classList.add("h-[70px]");
-                element.getElementsByTagName("h2")[0].classList.remove("text-white")
-                element.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
-                element.getElementsByTagName("span")[0].classList.remove("hidden")
-                element.getElementsByTagName("span")[1].classList.add("hidden")
-            } else {
-                accordion[prevIndex].classList.remove("bg-primary");
-                accordion[prevIndex].classList.add("bg-white");
-                accordion[prevIndex].classList.remove("h-40");
-                accordion[prevIndex].classList.add("h-[70px]");
-                accordion[prevIndex].getElementsByTagName("h2")[0].classList.remove("text-white")
-                accordion[prevIndex].getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
-                accordion[prevIndex].getElementsByTagName("span")[0].classList.remove("hidden")
-                accordion[prevIndex].getElementsByTagName("span")[1].classList.add("hidden")
-                element.classList.add("bg-primary");
-                element.classList.remove("bg-white");
-                element.classList.add("h-40");
-                element.classList.remove("h-[70px]");
-                element.getElementsByTagName("h2")[0].classList.add("text-white")
-                element.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
-                element.getElementsByTagName("span")[1].classList.remove("hidden")
-                element.getElementsByTagName("span")[0].classList.add("hidden")
-            }
-            console.log(prevIndex, currentIndex)
-            isAccordionOpen = false;
-        }
-    })
-})
 
 const swiper3 = new Swiper(".mySwiper3", {
     spaceBetween: 20,
@@ -196,3 +127,66 @@ const swiper3 = new Swiper(".mySwiper3", {
         prevEl: ".prev-2",
     },
 });
+function accordionToggle(element) {
+    console.log(element)
+    if (element.classList.contains("max-h-[70px]")) {
+        element.style.maxHeight = element.scrollHeight + 'px';
+        element.classList.remove("max-h-[70px]");
+        element.classList.add("bg-primary");
+        element.classList.remove("bg-white");
+        element.getElementsByTagName("h2")[0].classList.add("text-white")
+        element.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
+        element.getElementsByTagName("span")[1].classList.remove("hidden")
+        element.getElementsByTagName("span")[0].classList.add("hidden")
+
+    } else {
+        element.style.maxHeight = 70 + "px";
+        element.classList.add("max-h-[70px]");
+        element.classList.remove("bg-primary");
+        element.classList.add("bg-white");
+        element.getElementsByTagName("h2")[0].classList.remove("text-white")
+        element.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
+        element.getElementsByTagName("span")[0].classList.remove("hidden")
+        element.getElementsByTagName("span")[1].classList.add("hidden")
+    }
+}
+
+function searchToggle(element) {
+    if (element.classList.contains('hidden')) {
+        element.classList.remove('hidden');
+    } else {
+        setTimeout(() => {
+            element.classList.add('hidden');
+        }, 300); // Match this timeout to the CSS transition duration
+    }
+}
+
+
+const dropdown = document.getElementById("mainDropdown");
+
+function mainToggle() {
+    if (dropdown.classList.contains('hidden')) {
+        dropdown.classList.remove('hidden');
+        dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+    } else {
+        dropdown.style.maxHeight = 0;
+        setTimeout(() => {
+            dropdown.classList.add('hidden');
+        }, 300); // Match this timeout to the CSS transition duration
+    }
+}
+
+function toggle(element) {
+    const mainMaxHeight = dropdown.style.maxHeight.split('px')[0];
+    if (element.classList.contains('hidden')) {
+        element.classList.remove('hidden');
+        element.style.maxHeight = element.scrollHeight + 'px';
+        dropdown.style.maxHeight = Number(element.scrollHeight) + Number(mainMaxHeight) + 'px';
+    } else {
+        element.style.maxHeight = 0;
+        dropdown.style.maxHeight = mainMaxHeight + "px";
+        setTimeout(() => {
+            element.classList.add('hidden');
+        }, 300); // Match this timeout to the CSS transition duration
+    }
+}
