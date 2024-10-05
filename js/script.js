@@ -40,6 +40,16 @@ navbarBtn.addEventListener("click", () => {
         isNavbarOpen = true;
     }
 })
+document.addEventListener('click', function (event) {
+    // Check if the click is outside of the mobile menu
+    if (!navbar.contains(event.target) && !navbarBtn.contains(event.target)) {
+        navbar.classList.add("-right-64");
+        navbar.classList.remove("-right-0");
+        navbarBtnIcon[1].classList.add("hidden");
+        navbarBtnIcon[0].classList.remove("hidden");
+        isNavbarOpen = false;
+    }
+});
 
 const swiper = new Swiper(".mySwiper", {
     spaceBetween: 30,
@@ -81,10 +91,10 @@ const swiper2 = new Swiper(".mySwiper2", {
             spaceBetween: 50,
         },
     },
-    autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-    },
+    // autoplay: {
+    //     delay: 2500,
+    //     disableOnInteraction: false,
+    // },
     navigation: {
         nextEl: ".next-1",
         prevEl: ".prev-1",
@@ -127,9 +137,34 @@ const swiper3 = new Swiper(".mySwiper3", {
         prevEl: ".prev-2",
     },
 });
+
+window.addEventListener("load", () => {
+    const accordion = document.getElementById("first-accordion");
+    console.log(accordion)
+    accordion.style.maxHeight = accordion.scrollHeight + 'px';
+    accordion.classList.remove("max-h-[70px]");
+    accordion.classList.add("bg-primary");
+    accordion.classList.remove("bg-white");
+    accordion.getElementsByTagName("h2")[0].classList.add("text-white")
+    accordion.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
+    accordion.getElementsByTagName("span")[1].classList.remove("hidden")
+    accordion.getElementsByTagName("span")[0].classList.add("hidden")
+})
+
 function accordionToggle(element) {
     console.log(element)
     if (element.classList.contains("max-h-[70px]")) {
+        const allAccordions = document.getElementById("accordion").children;
+        [...allAccordions].forEach(accordion => {
+            accordion.style.maxHeight = 70 + "px";
+            accordion.classList.add("max-h-[70px]");
+            accordion.classList.remove("bg-primary");
+            accordion.classList.add("bg-white");
+            accordion.getElementsByTagName("h2")[0].classList.remove("text-white")
+            accordion.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
+            accordion.getElementsByTagName("span")[0].classList.remove("hidden")
+            accordion.getElementsByTagName("span")[1].classList.add("hidden")
+        })
         element.style.maxHeight = element.scrollHeight + 'px';
         element.classList.remove("max-h-[70px]");
         element.classList.add("bg-primary");
@@ -190,3 +225,39 @@ function toggle(element) {
         }, 300); // Match this timeout to the CSS transition duration
     }
 }
+
+
+
+const tabButtons = document.querySelectorAll('.tab-btn');
+const tabContents = document.querySelectorAll('.tab-content');
+
+tabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const target = button.getAttribute('data-target');
+        console.log(target)
+
+        // Hide all tab contents
+        tabContents.forEach(content => {
+            content.classList.add('hidden');
+        });
+
+        // Remove active class from all buttons
+        tabButtons.forEach(btn => {
+            const tabIconContainer = btn.querySelector("#tab-icon").children;
+            tabIconContainer[0].classList.remove("hidden");
+            tabIconContainer[1].classList.add("hidden");
+        });
+
+        // Show the target content
+        const content = [...tabContents].filter(content => content.getAttribute('data-target') === target);
+        console.log(content)
+        content.forEach(item => {
+            item.classList.remove('hidden');
+        })
+
+        const tabIconContainer = button.querySelector("#tab-icon").children;
+        console.log(tabIconContainer)
+        tabIconContainer[0].classList.add("hidden");
+        tabIconContainer[1].classList.remove("hidden");
+    });
+});
