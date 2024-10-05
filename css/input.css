@@ -112,3 +112,20 @@
     box-shadow: calc(1 * 100px * 0.5) calc(-1 * 100px * 0.5) #fff;
   }
 }
+
+#breadcrumb li:not(:last-of-type)::after {
+  content: "/";
+  margin-left: 5px;
+  color: #7b7d7e;
+}
+
+#breadcrumb li {
+  color: #7b7d7e;
+}
+#breadcrumb li:hover {
+  color: #009b9e;
+  transition: all 0.3s linear;
+}
+#breadcrumb li:last-of-type {
+  color: #009b9e;
+}
