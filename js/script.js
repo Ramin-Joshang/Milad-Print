@@ -312,7 +312,17 @@ const orderTabContents = document.querySelectorAll('.order-tab-content');
 orderTabButtons.forEach(button => {
     button.addEventListener('click', () => {
         const target = button.getAttribute('data-tab');
-        console.log(target)
+
+        orderTabButtons.forEach(element => {
+            [...element.getElementsByTagName("p")].forEach(element => {
+                element.classList.remove("text-primary");
+                element.classList.add("text-mute");
+            });
+            element.getElementsByTagName("div")[0].classList.remove("border-primary");
+            element.getElementsByTagName("div")[0].classList.add("border-mute");
+            element.getElementsByTagName("span")[0].classList.remove("bg-primary");
+            element.getElementsByTagName("span")[0].classList.add("bg-mute");
+        })
 
         // Hide all tab contents
         orderTabContents.forEach(content => {
@@ -326,6 +336,11 @@ orderTabButtons.forEach(button => {
         //     tabIconContainer[1].classList.add("hidden");
         // });
 
+        [...button.getElementsByTagName("p")].forEach(element => {
+            element.classList.add("text-primary");
+        });
+        button.getElementsByTagName("div")[0].classList.add("border-primary");
+        button.getElementsByTagName("span")[0].classList.add("bg-primary");
         // Show the target content
         const content = [...orderTabContents].filter(content => content.getAttribute('data-tab') === target);
         console.log(content)
@@ -340,6 +355,52 @@ orderTabButtons.forEach(button => {
     });
 });
 
+function tabController(element) {
+    let target;
+    if (element.getAttribute('data-tab') == 1) {
+        target = 2;
+    } else {
+        target = 1
+    }
+    // const target = element.getAttribute('data-tab') !== 1 ? 2 : 1;
+    console.log("Target =>", target)
+
+    console.log(element.getAttribute("data-tab"))
+    const orderTabButton = document.querySelector(`.order-tab-btn[data-tab="${target}"]`);
+    console.log(orderTabButton)
+    const orderTabContent = document.querySelector(`.order-tab-content[data-tab="${target}"]`);
+    console.log(orderTabContent)
+
+
+
+
+    orderTabButtons.forEach(element => {
+        [...element.getElementsByTagName("p")].forEach(element => {
+            element.classList.remove("text-primary");
+            element.classList.add("text-mute");
+        });
+        element.getElementsByTagName("div")[0].classList.remove("border-primary");
+        element.getElementsByTagName("div")[0].classList.add("border-mute");
+        element.getElementsByTagName("span")[0].classList.remove("bg-primary");
+        element.getElementsByTagName("span")[0].classList.add("bg-mute");
+    })
+
+    // Hide all tab contents
+    orderTabContents.forEach(content => {
+        content.classList.add('hidden');
+    });
+
+    //******* */
+
+    [...orderTabButton.getElementsByTagName("p")].forEach(element => {
+        element.classList.add("text-primary");
+    });
+    orderTabButton.getElementsByTagName("div")[0].classList.add("border-primary");
+    orderTabButton.getElementsByTagName("span")[0].classList.add("bg-primary");
+
+
+    orderTabContent.classList.remove("hidden")
+}
 
 const orderTabButtons2 = document.querySelectorAll('.order-tab-btn-2');
 const orderTabContents2 = document.querySelectorAll('.order-tab-content-2');
@@ -354,12 +415,7 @@ orderTabButtons2.forEach(button => {
             content.classList.add('hidden');
         });
 
-        // Remove active class from all buttons
-        // orderTabButtons.forEach(btn => {
-        //     const tabIconContainer = btn.querySelector("#tab-icon").children;
-        //     tabIconContainer[0].classList.remove("hidden");
-        //     tabIconContainer[1].classList.add("hidden");
-        // });
+
 
         // Show the target content
         const content = [...orderTabContents2].filter(content => content.getAttribute('data-tab-2') === target);
@@ -368,10 +424,7 @@ orderTabButtons2.forEach(button => {
             item.classList.remove('hidden');
         })
 
-        // const tabIconContainer = button.querySelector("#tab-icon").children;
-        // console.log(tabIconContainer)
-        // tabIconContainer[0].classList.add("hidden");
-        // tabIconContainer[1].classList.remove("hidden");
+
     });
 });
 
@@ -381,20 +434,33 @@ const userSidebarTitle = document.getElementById("user-sidebar-title");
 const userSidebarText = document.querySelectorAll(".user-sidebar-text");
 console.log(userSidebarTitle, userSidebarText)
 let isUserSidebarOpen = false;
-userSidebarBtn.addEventListener("click", () => {
+userSidebarBtn?.addEventListener("click", () => {
     if (userSidebar.classList.contains("w-16")) {
-        userSidebar.classList.add("w-[500px]");
+        userSidebar.classList.add("min-w-60");
         userSidebar.classList.remove("w-16");
         userSidebarTitle.classList.remove("hidden");
         userSidebarText.forEach(text => {
             text.classList.remove("hidden");
         })
     } else {
-        userSidebar.classList.remove("w-[500px]");
+        userSidebar.classList.remove("min-w-60");
         userSidebar.classList.add("w-16");
         userSidebarTitle.classList.add("hidden");
         userSidebarText.forEach(text => {
             text.classList.add("hidden");
         })
     }
+})
+
+const tabDays = document.querySelectorAll(".tab-day");
+tabDays.forEach(day => {
+    day.addEventListener("click", () => {
+        console.log(day)
+        if (day.classList.contains("opacity-15")) {
+            tabDays.forEach(item => {
+                item.classList.add("opacity-15");
+            });
+            day.classList.remove("opacity-15")
+        }
+    })
 })
