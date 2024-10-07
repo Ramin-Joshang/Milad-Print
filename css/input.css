@@ -129,3 +129,24 @@
 #breadcrumb li:last-of-type {
   color: #009b9e;
 }
+
+.mySwiper4 .swiper-pagination-bullet-active {
+  background-color: #009b9e !important;
+  width: 20px !important;
+  border-radius: 5px !important;
+}
+
+.mySwiper6 .swiper-slide {
+  width: 25%;
+  height: 100%;
+  opacity: 0.4;
+}
+
+.mySwiper6 .swiper-slide-thumb-active {
+  opacity: 1;
+}
+.mySwiper6 .swiper-slide-thumb-active img {
+  border: 2px solid #f1073a;
+  border-radius: 10px;
+  padding: 2px;
+}

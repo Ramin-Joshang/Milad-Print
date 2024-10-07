@@ -1,5 +1,43 @@
-const navbarDropdownCategories = document.getElementById("navar-menu-category").children;
-const navbarDropdownProducts = document.getElementById("navbar-menu-products").children;
+const swiper4 = new Swiper(".mySwiper4", {
+    spaceBetween: 20,
+    loop: true,
+    slidesPerView: 1,
+    // autoplay: {
+    //     delay: 2500,
+    //     disableOnInteraction: false,
+    // },
+    pagination: {
+        el: ".swiper-pagination",
+    },
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+});
+
+const swiper6 = new Swiper(".mySwiper6", {
+    spaceBetween: 10,
+    slidesPerView: 3,
+    freeMode: true,
+
+    watchSlidesProgress: true,
+});
+
+const swiper7 = new Swiper(".mySwiper7", {
+    spaceBetween: 10,
+    navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+    },
+    thumbs: {
+        swiper: swiper6,
+    },
+
+});
+
+
+const navbarDropdownCategories = document.getElementById("navar-menu-category")?.children;
+const navbarDropdownProducts = document.getElementById("navbar-menu-products")?.children;
 [...navbarDropdownCategories].forEach((element, index) => {
     element.addEventListener("mouseover", () => {
         [...navbarDropdownCategories].forEach(element => {
@@ -91,10 +129,10 @@ const swiper2 = new Swiper(".mySwiper2", {
             spaceBetween: 50,
         },
     },
-    // autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    // },
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
     navigation: {
         nextEl: ".next-1",
         prevEl: ".prev-1",
@@ -140,15 +178,18 @@ const swiper3 = new Swiper(".mySwiper3", {
 
 window.addEventListener("load", () => {
     const accordion = document.getElementById("first-accordion");
-    console.log(accordion)
-    accordion.style.maxHeight = accordion.scrollHeight + 'px';
-    accordion.classList.remove("max-h-[70px]");
-    accordion.classList.add("bg-primary");
-    accordion.classList.remove("bg-white");
-    accordion.getElementsByTagName("h2")[0].classList.add("text-white")
-    accordion.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
-    accordion.getElementsByTagName("span")[1].classList.remove("hidden")
-    accordion.getElementsByTagName("span")[0].classList.add("hidden")
+    if (accordion) {
+
+        console.log(accordion)
+        accordion.style.maxHeight = accordion.scrollHeight + 'px';
+        accordion.classList.remove("max-h-[70px]");
+        accordion.classList.add("bg-primary");
+        accordion.classList.remove("bg-white");
+        accordion.getElementsByTagName("h2")[0].classList.add("text-white")
+        accordion.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
+        accordion.getElementsByTagName("span")[1].classList.remove("hidden")
+        accordion.getElementsByTagName("span")[0].classList.add("hidden")
+    }
 })
 
 function accordionToggle(element) {
@@ -261,3 +302,99 @@ tabButtons.forEach(button => {
         tabIconContainer[1].classList.remove("hidden");
     });
 });
+
+
+
+
+const orderTabButtons = document.querySelectorAll('.order-tab-btn');
+const orderTabContents = document.querySelectorAll('.order-tab-content');
+
+orderTabButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const target = button.getAttribute('data-tab');
+        console.log(target)
+
+        // Hide all tab contents
+        orderTabContents.forEach(content => {
+            content.classList.add('hidden');
+        });
+
+        // Remove active class from all buttons
+        // orderTabButtons.forEach(btn => {
+        //     const tabIconContainer = btn.querySelector("#tab-icon").children;
+        //     tabIconContainer[0].classList.remove("hidden");
+        //     tabIconContainer[1].classList.add("hidden");
+        // });
+
+        // Show the target content
+        const content = [...orderTabContents].filter(content => content.getAttribute('data-tab') === target);
+        console.log(content)
+        content.forEach(item => {
+            item.classList.remove('hidden');
+        })
+
+        // const tabIconContainer = button.querySelector("#tab-icon").children;
+        // console.log(tabIconContainer)
+        // tabIconContainer[0].classList.add("hidden");
+        // tabIconContainer[1].classList.remove("hidden");
+    });
+});
+
+
+const orderTabButtons2 = document.querySelectorAll('.order-tab-btn-2');
+const orderTabContents2 = document.querySelectorAll('.order-tab-content-2');
+
+orderTabButtons2.forEach(button => {
+    button.addEventListener('click', () => {
+        const target = button.getAttribute('data-tab-2');
+        console.log(target)
+
+        // Hide all tab contents
+        orderTabContents2.forEach(content => {
+            content.classList.add('hidden');
+        });
+
+        // Remove active class from all buttons
+        // orderTabButtons.forEach(btn => {
+        //     const tabIconContainer = btn.querySelector("#tab-icon").children;
+        //     tabIconContainer[0].classList.remove("hidden");
+        //     tabIconContainer[1].classList.add("hidden");
+        // });
+
+        // Show the target content
+        const content = [...orderTabContents2].filter(content => content.getAttribute('data-tab-2') === target);
+        console.log(content)
+        content.forEach(item => {
+            item.classList.remove('hidden');
+        })
+
+        // const tabIconContainer = button.querySelector("#tab-icon").children;
+        // console.log(tabIconContainer)
+        // tabIconContainer[0].classList.add("hidden");
+        // tabIconContainer[1].classList.remove("hidden");
+    });
+});
+
+const userSidebar = document.getElementById("user-sidebar");
+const userSidebarBtn = document.getElementById("user-sidebar-btn");
+const userSidebarTitle = document.getElementById("user-sidebar-title");
+const userSidebarText = document.querySelectorAll(".user-sidebar-text");
+console.log(userSidebarTitle, userSidebarText)
+let isUserSidebarOpen = false;
+userSidebarBtn.addEventListener("click", () => {
+    if (userSidebar.classList.contains("w-16")) {
+        userSidebar.classList.add("w-[500px]");
+        userSidebar.classList.remove("w-16");
+        userSidebarTitle.classList.remove("hidden");
+        userSidebarText.forEach(text => {
+            text.classList.remove("hidden");
+        })
+    } else {
+        userSidebar.classList.remove("w-[500px]");
+        userSidebar.classList.add("w-16");
+        userSidebarTitle.classList.add("hidden");
+        userSidebarText.forEach(text => {
+            text.classList.add("hidden");
+        })
+    }
+})
