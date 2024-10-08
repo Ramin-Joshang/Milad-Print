@@ -2,10 +2,10 @@ const swiper4 = new Swiper(".mySwiper4", {
     spaceBetween: 20,
     loop: true,
     slidesPerView: 1,
-    // autoplay: {
-    //     delay: 2500,
-    //     disableOnInteraction: false,
-    // },
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
     pagination: {
         el: ".swiper-pagination",
     },
@@ -193,7 +193,6 @@ window.addEventListener("load", () => {
 })
 
 function accordionToggle(element) {
-    console.log(element)
     if (element.classList.contains("max-h-[70px]")) {
         const allAccordions = document.getElementById("accordion").children;
         [...allAccordions].forEach(accordion => {
@@ -205,6 +204,7 @@ function accordionToggle(element) {
             accordion.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
             accordion.getElementsByTagName("span")[0].classList.remove("hidden")
             accordion.getElementsByTagName("span")[1].classList.add("hidden")
+            console.log("Ramin")
         })
         element.style.maxHeight = element.scrollHeight + 'px';
         element.classList.remove("max-h-[70px]");
@@ -214,6 +214,7 @@ function accordionToggle(element) {
         element.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
         element.getElementsByTagName("span")[1].classList.remove("hidden")
         element.getElementsByTagName("span")[0].classList.add("hidden")
+        console.log("Ramin 2")
 
     } else {
         element.style.maxHeight = 70 + "px";
@@ -224,8 +225,11 @@ function accordionToggle(element) {
         element.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
         element.getElementsByTagName("span")[0].classList.remove("hidden")
         element.getElementsByTagName("span")[1].classList.add("hidden")
+        console.log("Ramin 3")
     }
 }
+
+
 
 function searchToggle(element) {
     if (element.classList.contains('hidden')) {
@@ -462,5 +466,117 @@ tabDays.forEach(day => {
             });
             day.classList.remove("opacity-15")
         }
+    })
+})
+
+const swiper8 = new Swiper(".mySwiper8", {
+    spaceBetween: 10,
+    freeMode: true,
+    slidesPerView: 2,
+    autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+    },
+    loop: true,
+    breakpoints: {
+        560: {
+            slidesPerView: 3,
+        },
+        768: {
+            slidesPerView: 4,
+        },
+        1024: {
+            slidesPerView: 5,
+        },
+        1280: {
+            slidesPerView: 6,
+        },
+        1536: {
+            slidesPerView: 7,
+        },
+    }
+});
+
+
+function faqAccordionToggle(element) {
+    if (element.classList.contains("max-h-[70px]")) {
+        const target = element.parentElement.getAttribute("data-faq")
+        const allAccordions = document.getElementsByClassName("accordion")[target - 1].children;
+        // console.log(document.getElementsByClassName("accordion")[0]);
+        [...allAccordions].forEach(accordion => {
+            accordion.style.maxHeight = 70 + "px";
+            accordion.classList.add("max-h-[70px]");
+            accordion.classList.remove("bg-primary");
+            accordion.classList.add("bg-white");
+            accordion.getElementsByTagName("h2")[0].classList.remove("text-white")
+            accordion.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
+            accordion.getElementsByTagName("span")[0].classList.remove("hidden")
+            accordion.getElementsByTagName("span")[1].classList.add("hidden")
+            console.log("Ramin")
+        })
+        element.style.maxHeight = element.scrollHeight + 'px';
+        element.classList.remove("max-h-[70px]");
+        element.classList.add("bg-primary");
+        element.classList.remove("bg-white");
+        element.getElementsByTagName("h2")[0].classList.add("text-white")
+        element.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
+        element.getElementsByTagName("span")[1].classList.remove("hidden")
+        element.getElementsByTagName("span")[0].classList.add("hidden")
+        console.log("Ramin 2")
+
+    } else {
+        element.style.maxHeight = 70 + "px";
+        element.classList.add("max-h-[70px]");
+        element.classList.remove("bg-primary");
+        element.classList.add("bg-white");
+        element.getElementsByTagName("h2")[0].classList.remove("text-white")
+        element.getElementsByTagName("h2")[0].classList.add("text-[#7B7D7E]")
+        element.getElementsByTagName("span")[0].classList.remove("hidden")
+        element.getElementsByTagName("span")[1].classList.add("hidden")
+        console.log("Ramin 3")
+    }
+}
+
+const faqButtons = document.querySelectorAll('.faq-btn');
+const faqContents = document.querySelectorAll('.faq-content');
+let isAccOpen = true;
+faqButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const target = button.getAttribute("data-faq");
+
+        faqButtons.forEach(item => {
+            item.classList.remove("bg-primary")
+            item.getElementsByTagName("p")[0].classList.remove("text-white");
+            item.getElementsByTagName("p")[0].classList.add("text-[#686868]");
+            item.getElementsByClassName("arrow")[0].classList.remove("rotate-180");
+        })
+        faqContents.forEach(content => {
+            content.classList.add("hidden")
+        })
+
+        // *********************************
+
+        button.classList.add("bg-primary")
+        button.getElementsByTagName("p")[0].classList.add("text-white");
+        button.getElementsByTagName("p")[0].classList.remove("text-[#686868]");
+        button.getElementsByClassName("arrow")[0].classList.add("rotate-180");
+
+        [...faqContents].filter(content => content.getAttribute("data-faq") === target)[0].classList.remove("hidden")
+
+        setTimeout(() => {
+            const accordion = [...faqContents].filter(content => content.getAttribute("data-faq") === target)[0].children[0]
+            if (accordion) {
+                console.log(accordion)
+                accordion.style.maxHeight = accordion.scrollHeight + 'px';
+                accordion.classList.remove("max-h-[70px]");
+                accordion.classList.add("bg-primary");
+                accordion.classList.remove("bg-white");
+                accordion.getElementsByTagName("h2")[0].classList.add("text-white")
+                accordion.getElementsByTagName("h2")[0].classList.remove("text-[#7B7D7E]")
+                accordion.getElementsByTagName("span")[1].classList.remove("hidden")
+                accordion.getElementsByTagName("span")[0].classList.add("hidden")
+            }
+            console.log("heeeeelooooo")
+        }, [500])
     })
 })

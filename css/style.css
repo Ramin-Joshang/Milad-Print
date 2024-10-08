@@ -671,6 +671,10 @@ video {
   top: auto !important;
 }
 
+.-bottom-3 {
+  bottom: -0.75rem;
+}
+
 .-bottom-5 {
   bottom: -1.25rem;
 }
@@ -715,8 +719,16 @@ video {
   left: 0px;
 }
 
+.left-1\/2 {
+  left: 50%;
+}
+
 .right-0 {
   right: 0px;
+}
+
+.right-1\/2 {
+  right: 50%;
 }
 
 .right-10 {
@@ -1067,6 +1079,10 @@ video {
   height: 2.5rem;
 }
 
+.h-11 {
+  height: 2.75rem;
+}
+
 .h-12 {
   height: 3rem;
 }
@@ -1093,6 +1109,10 @@ video {
 
 .h-52 {
   height: 13rem;
+}
+
+.h-6 {
+  height: 1.5rem;
 }
 
 .h-7 {
@@ -1143,6 +1163,10 @@ video {
   width: 2.5rem;
 }
 
+.w-11 {
+  width: 2.75rem;
+}
+
 .w-12 {
   width: 3rem;
 }
@@ -1169,6 +1193,10 @@ video {
 
 .w-5 {
   width: 1.25rem;
+}
+
+.w-6 {
+  width: 1.5rem;
 }
 
 .w-64 {
@@ -1212,6 +1240,10 @@ video {
   width: 100%;
 }
 
+.min-w-24 {
+  min-width: 6rem;
+}
+
 .min-w-32 {
   min-width: 8rem;
 }
@@ -1226,10 +1258,6 @@ video {
 
 .min-w-9 {
   min-width: 2.25rem;
-}
-
-.min-w-\[500px\] {
-  min-width: 500px;
 }
 
 .min-w-fit {
@@ -2809,6 +2837,10 @@ video {
   line-height: 2.5rem;
 }
 
+.text-\[1\.75rem\] {
+  font-size: 1.75rem;
+}
+
 .text-\[10px\] {
   font-size: 10px;
 }
@@ -3004,6 +3036,11 @@ video {
 .text-\[\#7E7D84\] {
   --tw-text-opacity: 1;
   color: rgb(126 125 132 / var(--tw-text-opacity));
+}
+
+.text-\[\#999BA8\] {
+  --tw-text-opacity: 1;
+  color: rgb(153 155 168 / var(--tw-text-opacity));
 }
 
 .text-\[\#9FA2A3\] {
@@ -3770,6 +3807,11 @@ video {
   border-color: rgb(0 155 158 / var(--tw-border-opacity));
 }
 
+.hover\:bg-primary:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(0 155 158 / var(--tw-bg-opacity));
+}
+
 .hover\:font-bold:hover {
   font-weight: 700;
 }
@@ -3842,6 +3884,11 @@ video {
   color: rgb(0 155 158 / var(--tw-text-opacity));
 }
 
+.group:hover .group-hover\:text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
 @media (min-width: 640px) {
   .sm\:col-span-2 {
     grid-column: span 2 / span 2;
@@ -3873,6 +3920,19 @@ video {
     align-items: center;
   }
 
+  .sm\:gap-5 {
+    gap: 1.25rem;
+  }
+
+  .sm\:p-5 {
+    padding: 1.25rem;
+  }
+
+  .sm\:px-10 {
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+  }
+
   .sm\:px-20 {
     padding-left: 5rem;
     padding-right: 5rem;
@@ -3890,6 +3950,12 @@ video {
 
   .sm\:underline {
     text-decoration-line: underline;
+  }
+
+  .sm\:shadow-custom-2 {
+    --tw-shadow: 0 5px 20px 0 #d8d8d8;
+    --tw-shadow-colored: 0 5px 20px 0 var(--tw-shadow-color);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
 }
 
