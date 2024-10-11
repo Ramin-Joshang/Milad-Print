@@ -37,7 +37,7 @@ const swiper7 = new Swiper(".mySwiper7", {
 
 
 const navbarDropdownCategories = document.getElementById("navar-menu-category")?.children;
-const navbarDropdownProducts = document.getElementById("navbar-menu-products")?.children;
+const navbarDropdownProducts = document.getElementsByClassName("navbar-menu-products");
 [...navbarDropdownCategories].forEach((element, index) => {
     element.addEventListener("mouseover", () => {
         [...navbarDropdownCategories].forEach(element => {
@@ -580,3 +580,158 @@ faqButtons.forEach(button => {
         }, [500])
     })
 })
+
+
+const forgotPasswordModal = document.getElementById('forgot-password-modal');
+const forgotPasswordModalContent = document.getElementById('forgot-password-modal-content');
+const forgotPasswordBtn = document.getElementById('forgot-password-btn');
+
+// Show modal
+forgotPasswordBtn.addEventListener("click", () => {
+    forgotPasswordModal.classList.remove('opacity-0', 'pointer-events-none');
+    forgotPasswordModalContent.classList.remove('opacity-0', 'scale-75', 'pointer-events-none');
+    forgotPasswordModal.classList.add('opacity-100', 'pointer-events-auto');
+    forgotPasswordModalContent.classList.add('opacity-100', 'scale-100', "pointer-event-auto");
+})
+
+forgotPasswordModal.addEventListener("click", (event) => {
+    if (event.target === forgotPasswordModal) {
+        forgotPasswordModal.classList.remove('opacity-100', 'pointer-events-auto');
+        forgotPasswordModalContent.classList.remove('opacity-100', 'scale-100', "pointer-event-auto");
+        forgotPasswordModal.classList.add('opacity-0', 'pointer-events-none');
+        forgotPasswordModalContent.classList.add('opacity-0', 'scale-75', 'pointer-events-none');;
+        console.log("hi")
+    }
+})
+const sendCodeModal = document.getElementById('send-code-modal');
+const sendCodeModalContent = document.getElementById('send-code-modal-content');
+const sendCodeBtn = document.getElementById('send-code-btn');
+
+// Show modal
+
+
+sendCodeModal.addEventListener("click", (event) => {
+    if (event.target === sendCodeModal) {
+        sendCodeModal.classList.remove('opacity-100', 'pointer-events-auto');
+        sendCodeModalContent.classList.remove('opacity-100', 'scale-100', "pointer-event-auto");
+        sendCodeModal.classList.add('opacity-0', 'pointer-events-none');
+        sendCodeModalContent.classList.add('opacity-0', 'scale-75', 'pointer-events-none');
+        console.log("hi")
+    }
+})
+
+
+function validateField(field) {
+    const regex = /^(09)\d{9}$/;
+    if (field.value.trim() === '' ||
+        (field.type === 'email' && !/\S+@\S+\.\S+/.test(field.value)) ||
+        (field.type === 'tel' && !regex.test(field.value))
+    ) {
+        field.classList.add('border-red-500');
+    } else {
+        field.classList.remove('border-red-500');
+    }
+}
+
+function validatePassword() {
+    const form = document.getElementById("registrationForm");
+    const password = form.getElementsByClassName('password')[0];
+    const repeatPassword = form.getElementsByClassName('repeatPassword')[0];
+    if (password.value.trim() === "") {
+        password.classList.add('border-red-500');
+
+    } else if (password.value.trim() === "") {
+        repeatPassword.classList.add('border-red-500');
+    } else {
+        if (password.value !== repeatPassword.value) {
+            repeatPassword.classList.add('border-red-500');
+        } else {
+            repeatPassword.classList.remove('border-red-500');
+        }
+    }
+}
+
+function handleSubmit(event) {
+    event.preventDefault();
+    const fields = [
+        event.target.getElementsByClassName('name')[0],
+        event.target.getElementsByClassName('email')[0],
+        event.target.getElementsByClassName('mobile')[0],
+        event.target.getElementsByClassName('password')[0],
+        event.target.getElementsByClassName('repeatPassword')[0]
+    ];
+
+    let valid = true;
+
+    fields.forEach(field => {
+        validateField(field);
+        if (field.classList.contains('border-red-500')) {
+            valid = false;
+        }
+    });
+
+    validatePassword();
+
+    if (valid && !event.target.getElementsByClassName('password')[0].classList.contains('border-red-500') && !event.target.getElementsByClassName('repeatPassword')[0].classList.contains('border-red-500')) {
+        console.log("succes")
+        sendCodeModal.classList.remove('opacity-0', 'pointer-events-none');
+        sendCodeModalContent.classList.remove('opacity-0', 'scale-75', "pointer-events-none");
+        sendCodeModal.classList.add('opacity-100', 'pointer-events-auto');
+        sendCodeModalContent.classList.add('opacity-100', 'scale-100', "pointer-event-auto");
+    }
+}
+
+function handleLoginSubmit(event) {
+    event.preventDefault();
+    const fields = [
+        event.target.getElementsByClassName('username')[0],
+        event.target.getElementsByClassName('password')[0],
+    ];
+
+    let valid = true;
+
+    fields.forEach(field => {
+        validateField(field);
+        if (field.classList.contains('border-red-500')) {
+            valid = false;
+        }
+    });
+
+    if (valid) {
+        window.location.replace('/user-panel.html');
+    }
+}
+function handleForgotSubmit(event) {
+    event.preventDefault();
+    const fields = [
+        event.target.getElementsByClassName('mobile')[0],
+    ];
+
+    let valid = true;
+
+    fields.forEach(field => {
+        validateField(field);
+        if (field.classList.contains('border-red-500')) {
+            valid = false;
+        }
+    });
+
+
+}
+function handleSendCodeSubmit(event) {
+    event.preventDefault();
+    const fields = [
+        event.target.getElementsByClassName('code')[0],
+    ];
+
+    let valid = true;
+
+    fields.forEach(field => {
+        validateField(field);
+        if (field.classList.contains('border-red-500')) {
+            valid = false;
+        }
+    });
+
+
+}
