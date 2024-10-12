@@ -621,117 +621,151 @@ sendCodeModal.addEventListener("click", (event) => {
 })
 
 
-function validateField(field) {
-    const regex = /^(09)\d{9}$/;
-    if (field.value.trim() === '' ||
-        (field.type === 'email' && !/\S+@\S+\.\S+/.test(field.value)) ||
-        (field.type === 'tel' && !regex.test(field.value))
-    ) {
-        field.classList.add('border-red-500');
+// function validateField(field) {
+//     const regex = /^(09)\d{9}$/;
+//     if (field.value.trim() === '' ||
+//         (field.type === 'email' && !/\S+@\S+\.\S+/.test(field.value)) ||
+//         (field.type === 'tel' && !regex.test(field.value))
+//     ) {
+//         field.classList.add('border-red-500');
+//     } else {
+//         field.classList.remove('border-red-500');
+//     }
+// }
+
+// function validatePassword() {
+//     const form = document.getElementById("registrationForm");
+//     const password = form.getElementsByClassName('password')[0];
+//     const repeatPassword = form.getElementsByClassName('repeatPassword')[0];
+//     if (password.value.trim() === "") {
+//         password.classList.add('border-red-500');
+
+//     } else if (password.value.trim() === "") {
+//         repeatPassword.classList.add('border-red-500');
+//     } else {
+//         if (password.value !== repeatPassword.value) {
+//             repeatPassword.classList.add('border-red-500');
+//         } else {
+//             repeatPassword.classList.remove('border-red-500');
+//         }
+//     }
+// }
+
+// function handleSubmit(event) {
+//     event.preventDefault();
+//     const fields = [
+//         event.target.getElementsByClassName('name')[0],
+//         event.target.getElementsByClassName('email')[0],
+//         event.target.getElementsByClassName('mobile')[0],
+//         event.target.getElementsByClassName('password')[0],
+//         event.target.getElementsByClassName('repeatPassword')[0]
+//     ];
+
+//     let valid = true;
+
+//     fields.forEach(field => {
+//         validateField(field);
+//         if (field.classList.contains('border-red-500')) {
+//             valid = false;
+//         }
+//     });
+
+//     validatePassword();
+
+//     if (valid && !event.target.getElementsByClassName('password')[0].classList.contains('border-red-500') && !event.target.getElementsByClassName('repeatPassword')[0].classList.contains('border-red-500')) {
+//         console.log("succes")
+//         sendCodeModal.classList.remove('opacity-0', 'pointer-events-none');
+//         sendCodeModalContent.classList.remove('opacity-0', 'scale-75', "pointer-events-none");
+//         sendCodeModal.classList.add('opacity-100', 'pointer-events-auto');
+//         sendCodeModalContent.classList.add('opacity-100', 'scale-100', "pointer-event-auto");
+//     }
+// }
+
+// function handleLoginSubmit(event) {
+//     event.preventDefault();
+//     const fields = [
+//         event.target.getElementsByClassName('username')[0],
+//         event.target.getElementsByClassName('password')[0],
+//     ];
+
+//     let valid = true;
+
+//     fields.forEach(field => {
+//         validateField(field);
+//         if (field.classList.contains('border-red-500')) {
+//             valid = false;
+//         }
+//     });
+
+//     if (valid) {
+//         window.location.replace('/user-panel.html');
+//     }
+// }
+// function handleForgotSubmit(event) {
+//     event.preventDefault();
+//     const fields = [
+//         event.target.getElementsByClassName('mobile')[0],
+//     ];
+
+//     let valid = true;
+
+//     fields.forEach(field => {
+//         validateField(field);
+//         if (field.classList.contains('border-red-500')) {
+//             valid = false;
+//         }
+//     });
+
+
+// }
+// function handleSendCodeSubmit(event) {
+//     event.preventDefault();
+//     const fields = [
+//         event.target.getElementsByClassName('code')[0],
+//     ];
+
+//     let valid = true;
+
+//     fields.forEach(field => {
+//         validateField(field);
+//         if (field.classList.contains('border-red-500')) {
+//             valid = false;
+//         }
+//     });
+
+
+// }
+
+function validateField(input) {
+    if (input.getAttribute("data-val-required") === "*" && input.value.trim() === '') {
+        input.classList.add('border-red-500');
+    } else if (input.getAttribute("type") === "tel" && input.value.length !== 11) {
+        input.classList.add('border-red-500');
+    } else if (input.getAttribute("type") === "email" && !/\S+@\S+\.\S+/.test(input.value)) {
+        input.classList.add('border-red-500');
+    } else if (input.getAttribute("name") === "confirmPassword" && input.value !== password.value) {
+        input.classList.add('border-red-500');
     } else {
-        field.classList.remove('border-red-500');
+        input.classList.remove('border-red-500');
     }
 }
 
-function validatePassword() {
-    const form = document.getElementById("registrationForm");
-    const password = form.getElementsByClassName('password')[0];
-    const repeatPassword = form.getElementsByClassName('repeatPassword')[0];
-    if (password.value.trim() === "") {
-        password.classList.add('border-red-500');
+const forms = document.getElementsByTagName("form");
 
-    } else if (password.value.trim() === "") {
-        repeatPassword.classList.add('border-red-500');
-    } else {
-        if (password.value !== repeatPassword.value) {
-            repeatPassword.classList.add('border-red-500');
-        } else {
-            repeatPassword.classList.remove('border-red-500');
-        }
-    }
-}
-
-function handleSubmit(event) {
-    event.preventDefault();
-    const fields = [
-        event.target.getElementsByClassName('name')[0],
-        event.target.getElementsByClassName('email')[0],
-        event.target.getElementsByClassName('mobile')[0],
-        event.target.getElementsByClassName('password')[0],
-        event.target.getElementsByClassName('repeatPassword')[0]
-    ];
-
-    let valid = true;
-
-    fields.forEach(field => {
-        validateField(field);
-        if (field.classList.contains('border-red-500')) {
-            valid = false;
-        }
-    });
-
-    validatePassword();
-
-    if (valid && !event.target.getElementsByClassName('password')[0].classList.contains('border-red-500') && !event.target.getElementsByClassName('repeatPassword')[0].classList.contains('border-red-500')) {
-        console.log("succes")
-        sendCodeModal.classList.remove('opacity-0', 'pointer-events-none');
-        sendCodeModalContent.classList.remove('opacity-0', 'scale-75', "pointer-events-none");
-        sendCodeModal.classList.add('opacity-100', 'pointer-events-auto');
-        sendCodeModalContent.classList.add('opacity-100', 'scale-100', "pointer-event-auto");
-    }
-}
-
-function handleLoginSubmit(event) {
-    event.preventDefault();
-    const fields = [
-        event.target.getElementsByClassName('username')[0],
-        event.target.getElementsByClassName('password')[0],
-    ];
-
-    let valid = true;
-
-    fields.forEach(field => {
-        validateField(field);
-        if (field.classList.contains('border-red-500')) {
-            valid = false;
-        }
-    });
-
-    if (valid) {
-        window.location.replace('/user-panel.html');
-    }
-}
-function handleForgotSubmit(event) {
-    event.preventDefault();
-    const fields = [
-        event.target.getElementsByClassName('mobile')[0],
-    ];
-
-    let valid = true;
-
-    fields.forEach(field => {
-        validateField(field);
-        if (field.classList.contains('border-red-500')) {
-            valid = false;
-        }
-    });
-
-
-}
-function handleSendCodeSubmit(event) {
-    event.preventDefault();
-    const fields = [
-        event.target.getElementsByClassName('code')[0],
-    ];
-
-    let valid = true;
-
-    fields.forEach(field => {
-        validateField(field);
-        if (field.classList.contains('border-red-500')) {
-            valid = false;
-        }
-    });
-
-
-}
+[...forms]?.forEach(form => {
+    const password = form.querySelector("input[name='password']")
+    const inputs = form.getElementsByTagName("input");
+    [...inputs]?.forEach(input => {
+        input.addEventListener("input", () => {
+            validateField(input);
+        })
+    })
+    form.addEventListener('submit', e => {
+        e.preventDefault();
+        const password = form.querySelector("input[name='password']")
+        const inputs = form.getElementsByTagName("input");
+        [...inputs]?.forEach(input => {
+            validateField(input);
+        })
+    })
+})

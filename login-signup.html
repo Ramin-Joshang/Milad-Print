@@ -703,17 +703,16 @@
                     <h2
                         class="text-lg text-primary pb-3 relative after:absolute after:bottom-0 after:right-0 after:h-0.5 after:bg-primary after:w-48">
                         ورود به حساب کاربری</h2>
-                    <form action="./user-panel.html" onsubmit="handleLoginSubmit(event)"
-                        class="mt-5 flex flex-col gap-5">
+                    <form action="./user-panel.html" class="mt-5 flex flex-col gap-5">
                         <div class="flex flex-col sm:flex-row sm:items-center">
                             <p class="min-w-32 text-sm text-[#515152]">نام کاربری:</p>
-                            <input oninput="validateField(this)"
+                            <input
                                 class="w-full px-5 py-1.5 focus:outline-none  rounded-xl bg-[#f5f5f5] border border-[#f5f5f5] username"
                                 type="text">
                         </div>
                         <div class="flex flex-col sm:flex-row sm:items-center">
                             <p class="min-w-32 text-sm text-[#515152]">رمز عبور:</p>
-                            <input oninput="validateField(this)"
+                            <input
                                 class="w-full px-5 py-1.5 focus:outline-none  rounded-xl bg-[#f5f5f5] border border-[#f5f5f5] password"
                                 type="password">
                         </div>
@@ -737,37 +736,36 @@
                     <h2
                         class="text-lg text-primary pb-3 relative after:absolute after:bottom-0 after:right-0 after:h-0.5 after:bg-primary after:w-48">
                         ثبت نام</h2>
-                    <form action="" onsubmit="handleSubmit(event)" id="registrationForm"
-                        class="mt-5 flex flex-col gap-5">
+                    <form action="" id="registrationForm" class="mt-5 flex flex-col gap-5">
                         <div class="flex flex-col sm:flex-row sm:items-center">
                             <p class="min-w-32 text-sm text-[#515152]">نام و نام خانوادگی:</p>
-                            <input oninput="validateField(this)"
+                            <input
                                 class="w-full px-5 py-1.5 focus:outline-none rounded-xl bg-[#f5f5f5] border border-[#f5f5f5] name"
                                 type="text" id="name">
                         </div>
                         <div class="flex flex-col sm:flex-row sm:items-center">
                             <p class="min-w-32 text-sm text-[#515152]">شماره همراه:</p>
-                            <input oninput="validateField(this)"
+                            <input
                                 class="w-full px-5 py-1.5 focus:outline-none  rounded-xl bg-[#f5f5f5] border border-[#f5f5f5] mobile"
                                 type="tel" id="mobile">
                         </div>
                         <div class="flex flex-col sm:flex-row sm:items-center">
                             <p class="min-w-32 text-sm text-[#515152]">ایمیل:</p>
-                            <input oninput="validateField(this)"
+                            <input
                                 class="w-full px-5 py-1.5 focus:outline-none  rounded-xl bg-[#f5f5f5] border border-[#f5f5f5] email"
                                 type="email" id="email">
                         </div>
                         <div class="flex flex-col sm:flex-row sm:items-center">
                             <p class="min-w-32 text-sm text-[#515152]">رمز عبور:</p>
-                            <input oninput="validateField(this); validatePassword()"
+                            <input
                                 class="w-full px-5 py-1.5 focus:outline-none  rounded-xl bg-[#f5f5f5] border border-[#f5f5f5] password"
-                                type="password" id="password">
+                                type="password" id="password" name="password">
                         </div>
                         <div class="flex flex-col sm:flex-row sm:items-center">
                             <p class="min-w-32 text-sm text-[#515152]">تکرار رمز عبور:</p>
-                            <input oninput="validateField(this); validatePassword()"
+                            <input
                                 class="w-full px-5 py-1.5 focus:outline-none  rounded-xl bg-[#f5f5f5] border border-[#f5f5f5] repeatPassword"
-                                type="password" id="repeatPassword">
+                                type="password" id="repeatPassword" name="confirmPassword">
                         </div>
                         <button id="send-code-btn" type="submit"
                             class="flex items-center gap-2 mt-10 mx-auto py-2.5 px-10 w-fit h-auto justify-center text-white bg-primary rounded-full  hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
@@ -786,7 +784,7 @@
                         class="text-lg text-primary pb-3 relative after:absolute after:bottom-0 after:right-0 after:h-0.5 after:bg-primary after:w-48">
                         فراموشی رمز عبور</h2>
 
-                    <form action="" onsubmit="handleForgotSubmit(event)" class="mt-5 flex flex-col gap-5">
+                    <form action="" class="mt-5 flex flex-col gap-5">
                         <p class="text-[15px]">
                             در صورتی که رمز عبور خود را فراموش کرده اید، با وارد نمودن شماره تلفن همراه، رمز عبور جدید
                             برای شما ارسال خواهد شد.
@@ -794,7 +792,7 @@
                         <div class="flex flex-col sm:flex-row sm:items-center relative">
                             <input
                                 class="w-full pr-10 pl-5 py-1.5 focus:outline-none  rounded-xl bg-[#f5f5f5] border border-[#f5f5f5] mobile"
-                                type="tel" placeholder="شماره همراه" oninput="validateField(this)">
+                                type="tel" placeholder="شماره همراه">
                             <span class="absolute right-2">
                                 <svg width="24" height="24" viewBox="0 0 32 32" fill="#009B9E"
                                     xmlns="http://www.w3.org/2000/svg">
@@ -823,14 +821,14 @@
                         class="text-lg text-primary pb-3 relative after:absolute after:bottom-0 after:right-0 after:h-0.5 after:bg-primary after:w-48">
                         کد فعال سازی</h2>
 
-                    <form action="" onsubmit="handleSendCodeSubmit(event)" class="mt-5 flex flex-col gap-5">
+                    <form action="" class="mt-5 flex flex-col gap-5">
                         <p class="text-[15px]">
                             کد فعال سازی را وارد نمایید
                         </p>
                         <div class="flex flex-col sm:flex-row sm:items-center relative">
                             <input
                                 class="w-full pr-10 pl-5 py-1.5 focus:outline-none  rounded-xl bg-[#f5f5f5] border border-[#f5f5f5] code"
-                                type="number" placeholder="کد فعال سازی" oninput="validateField(this)">
+                                type="number" placeholder="کد فعال سازی">
                             <span class="absolute right-2">
                                 <svg width="24" height="24" viewBox="0 0 32 32" fill="#009B9E"
                                     xmlns="http://www.w3.org/2000/svg">
