@@ -608,7 +608,7 @@ for (button of modalsBtn) {
             modalContent.classList.remove('opacity-100', 'scale-100', "pointer-event-auto");
             modalContent.classList.add('opacity-0', 'scale-75', 'pointer-events-none');;
         })
-        const currentModal = [...modals].filter(modal => modal.getAttribute("data-target") === btnTarget)[0];
+        const currentModal = [...modals].filter(modal => modal.getAttribute("id") === btnTarget)[0];
         const modalContent = currentModal.children[0];
         currentModal.classList.remove('opacity-0', 'pointer-events-none');
         currentModal.classList.add('opacity-100', 'pointer-events-auto');
